@@ -1,8 +1,6 @@
 from django.conf.urls import url
 from unab import views
 urlpatterns = [
-    url(r'^list/$', views.noticia_list, name='noticia_list'),
-    url(r'^edit/(?P<pk>\d+)$', views.noticia_update, name='noticia_edit'),
     url(r'^contacto/$', views.unab_contactos, name='unab_contacto'),
-    url(r'^ver/(?P<pk>\d+/$', views.contacto_ver, name='unab_ver'),
+    url(r'^ver/(?P<pk>\d+)$', views.contacto_ver, name='contacto_ver'),
 ]

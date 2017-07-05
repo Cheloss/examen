@@ -26,8 +26,8 @@
                     <td>{{contactos.name}}</td>
                     <td>{{contactos.apellido}}</td>
                     <td>{{contactos.telefono}}</td>                
-                    <td><a href="" class="btn btn-danger delete">
-                      <span class="glyphicon glyphicon-trash"></span>Ver Detalle</a>
+                    <td><a href="{% url 'contacto_ver' contactos.id %}" class="btn btn-primary">
+                      >Ver Detalle</a>
                     </td>
                   </tr>
                   {% endfor %}

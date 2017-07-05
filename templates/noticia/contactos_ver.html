@@ -2,23 +2,43 @@
 {% load thumbnail %}
 {% block titulo %} Listado de Contactos {% endblock %}
 {% block content %}
-  <section>
-    <div class="container">
-    <div class="col-lg-3">
-    <img src="http://placehold.it/400x400" alt="" class="img-thumbnail">
+<section>
+  <div class="container">
+  {% for contactos in object_list|slice:":1" %}
+    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+      <img src="{{ contactos.imagen.url }}" alt="" class="img-responsive img-thumbnail pull-left img-margin-right">
     </div>
-      <div class="col-lg-6">
-      {% for contactos in object_list|slice:":1" %}
-        <h1>{{contactos.name}}<small> {{contactos.category.name}}</small></h1>
-        <p><em>Fecha publicación: {{contactos.created}}</em></p>
-        <img src="http://placehold.it/200x200" alt="" class="img-responsive img-thumbnail pull-left img-margin-right">
-        <p>{{contactos.contenido}}</p>
-        {% endfor %}          
-      </div>
-      <div class="col-lg-3">
+    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">    
+    <h3>Información de contacto</h3>
+    <ul class="markdown-toc">
+      <li><b>Nombre:</b> {{contactos.name}}</li>
+      <li><b>Email:</b> {{contactos.email}}</li>
+      <li><b>Tel:</b> {{contactos.telefono}}</li>
+      <li><b>Dirección:</b> {{contactos.direccion}}</li>
+    </ul>
+      <h3>Formulario de Contacto</h3>
+      <form action="">
+        <div class="form-group">
+          <label for="exampleInputEmail1">Nombre</label>
+          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="nombre">
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">Email address</label>
+          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="email">
+        </div>
+        <div class="form-group">
+          <label for="exampleTextarea"></label>
+          <textarea class="form-control" id="exampleTextarea" rows="3"></textarea>
+        </div>
+        <button type="submit" class="btn btn-success">Enviar</button>
+      </form>
+      {% endfor %}          
+    </div>
+    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
       <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d4708.784803463673!2d-70.74308743314708!3d-33.43331519654125!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662c3c207d89611%3A0xe0a0dab2cb084ac4!2sPJ88-Av.+Teniente+Cruz+Esq.+%2F+Pdte.+Harry+Truman!5e0!3m2!1ses!2scl!4v1499283056229" width="300" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
     </div>
 
-    </div>
-  </section>
-  {% endblock %}
+
+  </div>
+</section>
+{% endblock %}

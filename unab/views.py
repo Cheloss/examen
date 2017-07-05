@@ -31,8 +31,9 @@ def unab_contactos(request) :
 
 def contacto_ver(request, pk) :
     data = {}
+    
     data['object_list'] = Contactos.objects.filter(pk=pk)
-    template_name = 'noticia/contacto_ver.html'
+    template_name = 'noticia/contactos_ver.html'
     return render(request, template_name, data)
 
 def index(request):
