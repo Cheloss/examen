@@ -1,0 +1,24 @@
+{% extends 'home.html' %}
+{% load thumbnail %}
+{% block titulo %} Listado de Contactos {% endblock %}
+{% block content %}
+  <section>
+    <div class="container">
+    <div class="col-lg-3">
+    <img src="http://placehold.it/400x400" alt="" class="img-thumbnail">
+    </div>
+      <div class="col-lg-6">
+      {% for contactos in object_list|slice:":1" %}
+        <h1>{{contactos.name}}<small> {{contactos.category.name}}</small></h1>
+        <p><em>Fecha publicación: {{contactos.created}}</em></p>
+        <img src="http://placehold.it/200x200" alt="" class="img-responsive img-thumbnail pull-left img-margin-right">
+        <p>{{contactos.contenido}}</p>
+        {% endfor %}          
+      </div>
+      <div class="col-lg-3">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d4708.784803463673!2d-70.74308743314708!3d-33.43331519654125!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662c3c207d89611%3A0xe0a0dab2cb084ac4!2sPJ88-Av.+Teniente+Cruz+Esq.+%2F+Pdte.+Harry+Truman!5e0!3m2!1ses!2scl!4v1499283056229" width="300" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
+    </div>
+
+    </div>
+  </section>
+  {% endblock %}
