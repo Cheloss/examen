@@ -4,18 +4,20 @@
 {% block content %}
 <section>
   <div class="container">
-  {% for contactos in object_list|slice:":1" %}
+    {% for contactos in object_list|slice:":1" %}
     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-      <img src="{{ contactos.imagen.url }}" alt="" class="img-responsive img-thumbnail pull-left img-margin-right">
+      {% thumbnail contactos.imagen "400x400" crop="center" as im %}
+      <img src="{{ im.url }}" alt="" class="img-responsive img-thumbnail pull-left img-margin-right" width="{{ im.width }}" height="{{ im.height }}">
+      {% endthumbnail %}
     </div>
     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">    
-    <h3>Información de contacto</h3>
-    <ul class="markdown-toc">
-      <li><b>Nombre:</b> {{contactos.name}}</li>
-      <li><b>Email:</b> {{contactos.email}}</li>
-      <li><b>Tel:</b> {{contactos.telefono}}</li>
-      <li><b>Dirección:</b>{{contactos.direccion}}</li>
-    </ul>
+      <h3>Información de contacto</h3>
+      <ul class="markdown-toc">
+        <li><b>Nombre:</b> {{contactos.name}}</li>
+        <li><b>Email:</b> {{contactos.email}}</li>
+        <li><b>Tel:</b> {{contactos.telefono}}</li>
+        <li><b>Dirección:</b>{{contactos.direccion}}</li>
+      </ul>
       <h3>Formulario de Contacto</h3>
       <form action="">
         <div class="form-group">
@@ -32,17 +34,13 @@
         </div>
         <button type="submit" class="btn btn-success">Enviar</button>
       </form>
-               
-    </div>
-    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-    <iframe width="300" height="300" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDJp84RIhq66OZVEYPgh1Xbwldg9QC2hKU
-    &q={{contactos.direccion}},+{{contactos.comuna}},+Región+Metropolitana,+Chile" allowfullscreen>
-</iframe>
-{% endfor %} 
-      <!-- <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d4708.784803463673!2d-70.74308743314708!3d-33.43331519654125!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662c3c207d89611%3A0xe0a0dab2cb084ac4!2sPJ88-Av.+Teniente+Cruz+Esq.+%2F+Pdte.+Harry+Truman!5e0!3m2!1ses!2scl!4v1499283056229" width="300" height="300" frameborder="0" style="border:0" allowfullscreen></iframe> -->
-    </div>
 
-
+    </div>
+    <div class="embed-responsive embed-responsive-4by3">
+      <iframe class="embed-responsive-item" height="400" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDJp84RIhq66OZVEYPgh1Xbwldg9QC2hKU
+      &q={{contactos.direccion}},+{{contactos.comuna}},+Región+Metropolitana,+Chile"></iframe>
+      {% endfor %}
+    </div>
   </div>
 </section>
 {% endblock %}
