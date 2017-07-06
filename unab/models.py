@@ -28,8 +28,9 @@ class Contactos(models.Model):
     name = models.CharField(max_length=20)
     apellido = models.CharField(max_length=20)
     email = models.CharField(max_length=60)
-    telefono = models.IntegerField()
+    telefono = models.CharField(max_length=60)
     direccion = models.CharField(max_length=60)
+    comuna = models.CharField(max_length=60)
     imagen=models.ImageField()
     def __str__(self):
         return self.name 
